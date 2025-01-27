@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YT Downloader Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎬 YT Downloader Pro</h1>
+            <button id="theme-toggle">🌓</button>
+        </div>
+        
+        <div class="card">
+            <form id="form-url" onsubmit="return false;">
+                <input type="url" id="url" placeholder="🔗 Pegar URL de YouTube aquí" required>
+                <button type="button" onclick="obtenerMetadatos()">Analizar</button>
+            </form>
+
+            <div id="info-video" class="hidden">
+                <div class="thumbnail-container">
+                    <img id="thumbnail" src="" alt="Miniatura">
+                </div>
+                <div class="detalles">
+                    <h2 id="titulo"></h2>
+                    <div class="meta-info">
+                        <span>⏱️ <span id="duracion"></span></span>
+                        <span>📐 <span id="resolucion"></span></span>
+                    </div>
+                    <button class="download-btn" onclick="iniciarDescarga()">⬇️ Descargar Video</button>
+                </div>
+            </div>
+
+            <div id="progreso" class="hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="estado-descarga">
+                    <span id="porcentaje">0%</span>
+                    <span id="velocidad">0.00 MiB/s</span>
+                    <span id="tiempo">ETA: --:--</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
